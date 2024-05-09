@@ -1,11 +1,13 @@
-import { useState } from 'react'
+// import React from 'react'
+import { Outlet } from "react-router-dom"
+// import { Navbar } from "rsuite"
+import Navbar from "./components/Navbar.jsx"
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
     <>
-  
+    <Navbar/>
+    <Outlet/>
     </>
   )
 }
