@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
+
 import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
+  const [, setIsSticky] = useState(false);
 
   // toggle menu
   const toggleMenu = () => {
