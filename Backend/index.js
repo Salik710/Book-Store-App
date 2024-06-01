@@ -7,7 +7,6 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-// pFdtHXl1gcnFV5mj password
 
 // Define a route
 app.get("/", (req, res) => {
@@ -18,7 +17,6 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri =
   "mongodb+srv://mohammadlaraib34:qt3aGWFXnHiqm8KG@cluster0.xpdu9hr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-  
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
@@ -40,14 +38,25 @@ async function run() {
     app.post("/upload-book", async (req, res) => {
       const data = req.body;
       const result = await bookCollections.insertOne(data);
-      res.send(result);
+      if (result) {
+        res.send(result);
+        console.log("Book added successfully");
+      } else {
+        console.log("Book not added");
+        res.send(404);
+      }
     });
 
     // get all books from database
     app.get("/all-books", async (req, res) => {
       const books = bookCollections.find();
       const result = await books.toArray();
-      res.send(result);
+      if (result) {
+        // console.log(`Number of books in database are ${result.length}`);
+        res.send(result);
+      } else {
+        res.send(404);
+      }
     });
 
     // Update using Patch
@@ -78,18 +87,19 @@ async function run() {
       res.send(result);
     });
 
-    // get item using category 
-    app.get("/all-books/c",async(req,res) => {
+    // get item using category
+    app.get("/all-books/c", async (req, res) => {
       const category = req.query.category;
-      if(category !== undefined){
-        const result = await bookCollections.find({category: category}).toArray();
+      if (category !== undefined) {
+        const result = await bookCollections
+          .find({ category: category })
+          .toArray();
         res.send(result);
-      }
-      else{
+      } else {
         res.send(404);
       }
-    })
-    
+    });
+
     // get a particular item
     app.get("/book/:id", async (req, res) => {
       const id = req.params.id;

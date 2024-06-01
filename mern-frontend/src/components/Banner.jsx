@@ -1,3 +1,14 @@
+
+import FavoriteBooks from "../home/FavoriteBooks"
+const Banner = () => {
+  return (
+    <div>
+        <FavoriteBooks/>
+    </div>
+  )
+}
+
+export default Banner
 import React from "react";
 import BannerCard from "../home/BannerCard";
 

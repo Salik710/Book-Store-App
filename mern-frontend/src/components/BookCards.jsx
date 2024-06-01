@@ -1,3 +1,14 @@
+
+// import React from 'react'
+
+const BookCards = () => {
+  return (
+    <div>Rendering BookCards...</div>
+  )
+}
+
+export default BookCards
+
 import React, { Link, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -69,3 +80,4 @@ const BookCards = ({ headline, books }) => {
   );
 };
 export default BookCards;
+

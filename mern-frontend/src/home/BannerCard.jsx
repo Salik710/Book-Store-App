@@ -1,4 +1,10 @@
 
+
+const BannerCard = () => {
+  return (
+    <div>BannerCard</div>
+  )
+
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -29,6 +35,7 @@ function BannerCard() {
           </Swiper>
         </>
       );
+
 }
 
 export default BannerCard
